@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ORBIS - Yapay zeka destekli astroloji uygulaması. Doğum haritanızı analiz edin, kişiselleştirilmiş kozmik yorumlar alın."
+    />
+    <meta
+      name="keywords"
+      content="astroloji, burç, doğum haritası, natal chart, yapay zeka, AI, horoskop, zodyak"
+    />
+    <meta name="author" content="ORBIS" />
+    <meta name="theme-color" content="#1a0a2e" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ORBIS - Kaderin Geometrisi" />
+    <meta
+      property="og:description"
+      content="Yapay zeka destekli astroloji uygulaması"
+    />
+    <meta
+      property="og:image"
+      content="https://orbisastro.online/images/og-image.png"
+    />
+    <meta property="og:url" content="https://orbisastro.online" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ORBIS - Kaderin Geometrisi" />
+    <meta
+      name="twitter:description"
+      content="Yapay zeka destekli astroloji uygulaması"
+    />
+
+    <title>ORBIS - Kaderin Geometrisi | AI Destekli Astroloji</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2444093901783574"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="cosmic-bg">
+      <div class="stars"></div>
+      <div class="stars2"></div>
+      <div class="stars3"></div>
+      <div class="nebula"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">
+          <span class="logo-icon">✧</span>
+          <span class="logo-text">ORBIS</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">Özellikler</a>
+          <a href="#how-it-works">Nasıl Çalışır</a>
+          <a href="#screenshots">Ekran Görüntüleri</a>
+          <a href="#pricing">Fiyatlandırma</a>
+          <a href="#download" class="nav-cta">İndir</a>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span class="material-symbols-rounded">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#features" onclick="closeMobileMenu()">Özellikler</a>
+      <a href="#how-it-works" onclick="closeMobileMenu()">Nasıl Çalışır</a>
+      <a href="#screenshots" onclick="closeMobileMenu()">Ekran Görüntüleri</a>
+      <a href="#pricing" onclick="closeMobileMenu()">Fiyatlandırma</a>
+      <a href="#download" onclick="closeMobileMenu()">İndir</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="material-symbols-rounded">auto_awesome</span>
+          AI Destekli Astroloji
+        </div>
+        <h1 class="hero-title">
+          <span class="title-icon">✧</span>
+          ORBIS
+        </h1>
+        <p class="hero-subtitle">Kaderin Geometrisi</p>
+        <p class="hero-description">
+          Yapay zeka destekli astroloji platformu ile doğum haritanızı keşfedin.
+          Kişiselleştirilmiş kozmik yorumlar, transit analizler ve daha fazlası.
+        </p>
+        <div class="hero-buttons">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.orbis.astrology"
+            class="btn-primary"
+            target="_blank"
+          >
+            <img
+              src="images/google-play-badge.svg"
+              alt="Google Play'den İndir"
+              class="store-badge"
+            />
+          </a>
+          <a
+            href="https://ast-kappa.vercel.app"
+            class="btn-secondary"
+            target="_blank"
+          >
+            <span class="material-symbols-rounded">language</span>
+            Web Uygulaması
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">AI Analiz</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Burç</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Olasılık</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit-container">
+          <div class="planet sun"></div>
+          <div class="orbit orbit-1">
+            <div class="planet mercury"></div>
+          </div>
+          <div class="orbit orbit-2">
+            <div class="planet venus"></div>
+          </div>
+          <div class="orbit orbit-3">
+            <div class="planet earth"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">Özellikler</span>
+          <h2 class="section-title">Kozmik Yetenekler</h2>
+          <p class="section-subtitle">
+            ORBIS ile astrolojinin derinliklerine dalın
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">psychology</span>
+            </div>
+            <h3>AI Destekli Yorumlar</h3>
+            <p>
+              Yapay zeka, doğum haritanızı analiz ederek kişiselleştirilmiş ve
+              derinlemesine yorumlar sunar.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">public</span>
+            </div>
+            <h3>Doğum Haritası</h3>
+            <p>
+              Gezegen pozisyonları, ev yerleşimleri ve açı analizleri ile
+              detaylı natal chart hesaplama.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">timeline</span>
+            </div>
+            <h3>Transit Analizi</h3>
+            <p>
+              Güncel gezegen geçişlerini natal haritanızla karşılaştırarak
+              gelecek öngörüleri alın.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">self_improvement</span>
+            </div>
+            <h3>Vedik Astroloji</h3>
+            <p>
+              Hint astrolojisi hesaplamaları, Nakshatra analizi ve Dasha
+              dönemleri.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">headphones</span>
+            </div>
+            <h3>Sesli Okuma</h3>
+            <p>
+              AI yorumlarını Türkçe sesli okuma ile dinleyin. Arka planda çalma
+              desteği.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">cloud_sync</span>
+            </div>
+            <h3>Bulut Senkronizasyon</h3>
+            <p>
+              Google hesabınızla giriş yapın, verileriniz tüm cihazlarınızda
+              senkronize olsun.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">Rehber</span>
+          <h2 class="section-title">Nasıl Çalışır?</h2>
+          <p class="section-subtitle">
+            3 kolay adımda kozmik yolculuğunuza başlayın
+          </p>
+        </div>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Doğum Bilgilerinizi Girin</h3>
+              <p>
+                İsminizi, doğum tarihinizi, saatinizi ve doğum yerinizi girin.
+                Ne kadar doğru bilgi, o kadar isabetli yorum.
+              </p>
+            </div>
+            <div class="step-icon">
+              <span class="material-symbols-rounded">edit_calendar</span>
+            </div>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Haritanızı Hesaplatın</h3>
+              <p>
+                ORBIS, Swiss Ephemeris kullanarak hassas gezegen pozisyonlarını
+                hesaplar ve görsel haritanızı oluşturur.
+              </p>
+            </div>
+            <div class="step-icon">
+              <span class="material-symbols-rounded">calculate</span>
+            </div>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>AI Yorumlarını Keşfedin</h3>
+              <p>
+                15+ farklı analiz kategorisinde yapay zeka destekli
+                kişiselleştirilmiş yorumlarınızı okuyun veya dinleyin.
+              </p>
+            </div>
+            <div class="step-icon">
+              <span class="material-symbols-rounded">auto_awesome</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots" id="screenshots">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">Galeri</span>
+          <h2 class="section-title">Uygulama Görünümü</h2>
+          <p class="section-subtitle">ORBIS'in kozmik dünyasına göz atın</p>
+        </div>
+
+        <div class="screenshots-carousel">
+          <div class="screenshot-card">
+            <img src="images/screenshot-1.png" alt="ORBIS Ana Sayfa" />
+            <div class="screenshot-caption">Doğum Bilgileri Formu</div>
+          </div>
+          <div class="screenshot-card">
+            <img src="images/screenshot-2.png" alt="Doğum Haritası" />
+            <div class="screenshot-caption">Doğum Haritası</div>
+          </div>
+          <div class="screenshot-card">
+            <img src="images/screenshot-3.png" alt="AI Yorumları" />
+            <div class="screenshot-caption">AI Yorumları</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis Types Section -->
+    <section class="analysis-types">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">Analizler</span>
+          <h2 class="section-title">15+ AI Analiz Türü</h2>
+          <p class="section-subtitle">
+            Hayatınızın her alanı için kozmik rehberlik
+          </p>
+        </div>
+
+        <div class="analysis-grid">
+          <div class="analysis-item">
+            <span class="analysis-icon">☀️</span>
+            <span>Güneş Burcu</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">🌙</span>
+            <span>Ay Burcu</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">⬆️</span>
+            <span>Yükselen Burç</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">💕</span>
+            <span>Aşk & İlişkiler</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">💼</span>
+            <span>Kariyer</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">💰</span>
+            <span>Finans</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">🧘</span>
+            <span>Sağlık</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">🎯</span>
+            <span>Yaşam Amacı</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">🌟</span>
+            <span>Günlük Yorum</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">📅</span>
+            <span>Haftalık</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">📆</span>
+            <span>Aylık</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">🔮</span>
+            <span>Yıllık</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">🪐</span>
+            <span>Transit</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">📿</span>
+            <span>Vedik</span>
+          </div>
+          <div class="analysis-item">
+            <span class="analysis-icon">✨</span>
+            <span>Kozmik Özet</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample Interpretations Section -->
+    <section class="sample-interpretations">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">Örnek Yorumlar</span>
+          <h2 class="section-title">AI Nasıl Yorumlar Üretir?</h2>
+          <p class="section-subtitle">
+            Gerçek doğum haritası verilerinden üretilmiş örnek AI yorumları
+          </p>
+        </div>
+
+        <div class="interpretations-grid">
+          <!-- Güneş Burcu Örneği -->
+          <div class="interpretation-card">
+            <div class="interpretation-header">
+              <div class="interpretation-icon sun-icon">☀️</div>
+              <div class="interpretation-meta">
+                <h3>Güneş Burcu Analizi</h3>
+                <span class="interpretation-tag">Güneş Aslan'da</span>
+              </div>
+            </div>
+            <div class="interpretation-content">
+              <p>
+                "Güneşiniz Aslan burcunda parıldıyor. Doğal bir lidersiniz,
+                sahneye çıkmak ve takdir görmek sizin için hayati önem taşıyor.
+                Yaratıcılığınız sınır tanımaz; sanat, tiyatro veya herhangi bir
+                kendini ifade alanında parlayabilirsiniz. Kalbiniz cömerttir,
+                sevdikleriniz için her şeyi yaparsınız..."
+              </p>
+            </div>
+            <div class="interpretation-footer">
+              <span class="typing-indicator">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="ai-badge">ORBIS AI tarafından üretildi</span>
+            </div>
+          </div>
+
+          <!-- Ay Burcu Örneği -->
+          <div class="interpretation-card">
+            <div class="interpretation-header">
+              <div class="interpretation-icon moon-icon">🌙</div>
+              <div class="interpretation-meta">
+                <h3>Ay Burcu Analizi</h3>
+                <span class="interpretation-tag">Ay Yengeç'te</span>
+              </div>
+            </div>
+            <div class="interpretation-content">
+              <p>
+                "Ayınız kendi evinde, Yengeç'te. Duygusal derinliğiniz ve
+                sezgileriniz olağanüstü güçlü. Anılar sizin için kutsal, geçmişe
+                derin bir bağ hissedersiniz. Aileniz ve yuvanız güvenlik
+                kaynağınız. Başkalarının duygularını adeta okuyabilirsiniz..."
+              </p>
+            </div>
+            <div class="interpretation-footer">
+              <span class="typing-indicator">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="ai-badge">ORBIS AI tarafından üretildi</span>
+            </div>
+          </div>
+
+          <!-- Kariyer Örneği -->
+          <div class="interpretation-card">
+            <div class="interpretation-header">
+              <div class="interpretation-icon career-icon">💼</div>
+              <div class="interpretation-meta">
+                <h3>Kariyer Analizi</h3>
+                <span class="interpretation-tag">10. Ev Oğlak</span>
+              </div>
+            </div>
+            <div class="interpretation-content">
+              <p>
+                "Kariyer eviniz Oğlak'ta, Satürn yönetiminde. Başarıya giden yol
+                sabır ve disiplinden geçiyor. Hızlı yükselişler yerine kalıcı,
+                sağlam temelli bir kariyer için doğmuşsunuz. Yöneticilik,
+                finans, hukuk veya devlet kurumları sizin alanınız olabilir..."
+              </p>
+            </div>
+            <div class="interpretation-footer">
+              <span class="typing-indicator">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="ai-badge">ORBIS AI tarafından üretildi</span>
+            </div>
+          </div>
+
+          <!-- Aşk Örneği -->
+          <div class="interpretation-card">
+            <div class="interpretation-header">
+              <div class="interpretation-icon love-icon">💕</div>
+              <div class="interpretation-meta">
+                <h3>Aşk & İlişkiler</h3>
+                <span class="interpretation-tag">Venüs Terazi'de</span>
+              </div>
+            </div>
+            <div class="interpretation-content">
+              <p>
+                "Venüs'ünüz kendi evinde, Terazi'de yüceltiliyor. Aşkta armoni,
+                denge ve estetik ararsınız. Romantik ilişkilerde adalet ve
+                eşitlik sizin için vazgeçilmez. Çatışmadan kaçınır, uzlaşmacı
+                bir partner olursunuz. Güzellik ve sanat sizin aşk diliniz..."
+              </p>
+            </div>
+            <div class="interpretation-footer">
+              <span class="typing-indicator">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="ai-badge">ORBIS AI tarafından üretildi</span>
+            </div>
+          </div>
+
+          <!-- Transit Örneği -->
+          <div class="interpretation-card featured">
+            <div class="featured-badge">🔥 GÜNCEL TRANSİT</div>
+            <div class="interpretation-header">
+              <div class="interpretation-icon transit-icon">🪐</div>
+              <div class="interpretation-meta">
+                <h3>Transit Analizi</h3>
+                <span class="interpretation-tag"
+                  >Jüpiter natal Güneş'e üçgen</span
+                >
+              </div>
+            </div>
+            <div class="interpretation-content">
+              <p>
+                "Şu an Jüpiter natal Güneşinize 120° açı yapıyor - bu yılın en
+                şanslı transit'lerinden biri! Genişleme, büyüme ve fırsatlar
+                kapınızı çalıyor. Yeni projeler başlatmak, seyahat etmek veya
+                eğitim almak için mükemmel bir dönem. Özgüveniniz zirve
+                yapıyor..."
+              </p>
+            </div>
+            <div class="interpretation-footer">
+              <span class="typing-indicator">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="ai-badge">ORBIS AI tarafından üretildi</span>
+            </div>
+          </div>
+
+          <!-- Vedik Örneği -->
+          <div class="interpretation-card">
+            <div class="interpretation-header">
+              <div class="interpretation-icon vedic-icon">📿</div>
+              <div class="interpretation-meta">
+                <h3>Vedik Astroloji</h3>
+                <span class="interpretation-tag">Rahu Dasa Dönemi</span>
+              </div>
+            </div>
+            <div class="interpretation-content">
+              <p>
+                "18 yıllık Rahu Mahadasa'sındasınız. Bu dönem dünyadaki
+                deneyimler, maddesel kazanımlar ve karmanızla yüzleşme
+                zamanıdır. Teknoloji, yabancı kültürler ve alışılmadık yollar
+                sizi çeker. Obsesif tutkular ve ani yaşam değişiklikleri
+                yaşayabilirsiniz..."
+              </p>
+            </div>
+            <div class="interpretation-footer">
+              <span class="typing-indicator">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="ai-badge">ORBIS AI tarafından üretildi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="interpretations-cta">
+          <p>Kendi doğum haritanız için kişiselleştirilmiş yorumlar alın</p>
+          <a href="https://ast-kappa.vercel.app/dashboard" class="btn-try-now">
+            <span class="material-symbols-rounded">auto_awesome</span>
+            Şimdi Dene - Ücretsiz
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">Fiyatlandırma</span>
+          <h2 class="section-title">Kozmik Planlar</h2>
+          <p class="section-subtitle">
+            Ücretsiz başlayın, ihtiyacınıza göre yükseltin
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Ücretsiz Plan -->
+          <div class="pricing-card free">
+            <div class="pricing-header">
+              <span class="pricing-icon">🌟</span>
+              <h3>Ücretsiz</h3>
+              <div class="pricing-price">
+                <span class="price-amount">₺0</span>
+                <span class="price-period">/ sonsuza dek</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>İlk gün <strong>8 analiz</strong> (3 reklamsız)</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Sonraki günler <strong>5 analiz</strong> (reklamlı)</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Tam doğum haritası</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>15+ AI analiz türü</span>
+              </div>
+              <div class="feature-item muted">
+                <span class="material-symbols-rounded">remove</span>
+                <span>Reklam gösterimi var</span>
+              </div>
+            </div>
+            <a href="https://ast-kappa.vercel.app" class="pricing-btn free-btn">
+              Ücretsiz Başla
+            </a>
+          </div>
+
+          <!-- Premium Aylık -->
+          <div class="pricing-card premium popular">
+            <div class="popular-badge">⭐ EN POPÜLER</div>
+            <div class="pricing-header">
+              <span class="pricing-icon">👑</span>
+              <h3>Premium Aylık</h3>
+              <div class="pricing-price">
+                <span class="price-amount">₺149</span>
+                <span class="price-period">/ ay</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span><strong>150 kredi</strong> dahil</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span><strong>Reklamsız</strong> deneyim</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Sınırsız doğum haritası</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Öncelikli AI erişimi</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Ek kredi satın alma imkanı</span>
+              </div>
+            </div>
+            <a
+              href="https://ast-kappa.vercel.app"
+              class="pricing-btn premium-btn"
+            >
+              Premium'a Geç
+            </a>
+          </div>
+
+          <!-- Premium Yıllık -->
+          <div class="pricing-card yearly">
+            <div class="save-badge">%30 TASARRUF</div>
+            <div class="pricing-header">
+              <span class="pricing-icon">💎</span>
+              <h3>Premium Yıllık</h3>
+              <div class="pricing-price">
+                <span class="price-amount">₺1.250</span>
+                <span class="price-period">/ yıl</span>
+              </div>
+              <div class="price-monthly">≈ ₺104/ay</div>
+            </div>
+            <div class="pricing-features">
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span><strong>2.500 kredi</strong> dahil</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span><strong>Reklamsız</strong> deneyim</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Tüm premium özellikler</span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>Yıllık <strong>%30 indirim</strong></span>
+              </div>
+              <div class="feature-item">
+                <span class="material-symbols-rounded check">check_circle</span>
+                <span>En yüksek kredi/TL oranı</span>
+              </div>
+            </div>
+            <a
+              href="https://ast-kappa.vercel.app"
+              class="pricing-btn yearly-btn"
+            >
+              Yıllık Plan Al
+            </a>
+          </div>
+        </div>
+
+        <!-- Diğer Paketler -->
+        <div class="other-packages">
+          <h4>Diğer Premium Seçenekleri</h4>
+          <div class="packages-row">
+            <div class="mini-package">
+              <span class="package-name">3 Aylık</span>
+              <span class="package-price">₺399</span>
+              <span class="package-credits">500 kredi</span>
+            </div>
+            <div class="mini-package">
+              <span class="package-name">6 Aylık</span>
+              <span class="package-price">₺750</span>
+              <span class="package-credits">1.000 kredi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kredi Paketleri -->
+        <div class="credit-packages">
+          <h4>
+            Ek Kredi Paketleri
+            <span class="credit-note">(Premium üyeler için)</span>
+          </h4>
+          <div class="credits-row">
+            <div class="credit-item">
+              <span class="credit-amount">10</span>
+              <span class="credit-price">₺35</span>
+            </div>
+            <div class="credit-item">
+              <span class="credit-amount">20</span>
+              <span class="credit-price">₺67</span>
+            </div>
+            <div class="credit-item">
+              <span class="credit-amount">30</span>
+              <span class="credit-price">₺82</span>
+            </div>
+            <div class="credit-item">
+              <span class="credit-amount">40</span>
+              <span class="credit-price">₺110</span>
+            </div>
+            <div class="credit-item popular-credit">
+              <span class="credit-amount">50</span>
+              <span class="credit-price">₺135</span>
+              <span class="best-value">En İyi Değer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="download">
+      <div class="cta-container">
+        <div class="cta-glow"></div>
+        <h2>Kozmik Yolculuğunuza Başlayın</h2>
+        <p>ORBIS'i şimdi indirin ve kaderinizin geometrisini keşfedin</p>
+        <div class="cta-buttons">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.orbis.astrology"
+            class="btn-download"
+            target="_blank"
+          >
+            <img
+              src="images/google-play-badge.svg"
+              alt="Google Play"
+              class="store-badge-lg"
+            />
+          </a>
+          <a
+            href="https://ast-kappa.vercel.app"
+            class="btn-web"
+            target="_blank"
+          >
+            <span class="material-symbols-rounded">language</span>
+            Web Uygulamasını Aç
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">✧</span>
+            <span>ORBIS</span>
+          </div>
+          <p>Kaderin Geometrisi</p>
+          <p class="footer-copyright">
+            © 2026 ORBIS Astrology<br />by Erkan ERDEM
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Uygulama</h4>
+            <a href="https://ast-kappa.vercel.app">Web Uygulaması</a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.orbis.astrology"
+              >Google Play</a
+            >
+            <a href="#features">Özellikler</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>Yasal</h4>
+            <a href="legal/privacy.html">Gizlilik Politikası</a>
+            <a href="legal/terms.html">Kullanım Koşulları</a>
+            <a href="legal/kvkk.html">KVKK</a>
+            <a href="https://ast-kappa.vercel.app/account/delete"
+              >Hesap Silme</a
+            >
+          </div>
+
+          <div class="footer-column">
+            <h4>İletişim</h4>
+            <a href="mailto:erkan@erkanerdem.net">erkan@erkanerdem.net</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          ⚠️ Bu uygulama yalnızca eğlence amaçlıdır. Astrolojik yorumlar
+          profesyonel danışmanlık yerine geçmez.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
