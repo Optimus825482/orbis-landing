@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ORBIS Blog - Astroloji, doğum haritası, burç yorumları ve gökyüzü hareketleri hakkında güncel bilgiler ve rehberler."
+    />
+    <title>Blog | ORBIS - Astroloji ve Yapay Zeka</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .blog-header {
+        padding: 140px 2rem 4rem;
+        text-align: center;
+        background: radial-gradient(
+          circle at center,
+          rgba(147, 51, 234, 0.1) 0%,
+          transparent 70%
+        );
+      }
+      .blog-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #d4d4d8 50%,
+          #fbbf24 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .blog-card {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .blog-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+      }
+      .blog-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #1a0a2e 0%, #4c1d95 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+      .blog-content {
+        padding: 2rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .blog-date {
+        font-size: 0.875rem;
+        color: var(--primary-light);
+        margin-bottom: 0.5rem;
+      }
+      .blog-card h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+      .blog-card p {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        flex: 1;
+      }
+      .read-more {
+        color: var(--gold);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s ease;
+      }
+      .read-more:hover {
+        gap: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="cosmic-bg">
+      <div class="stars"></div>
+      <div class="stars2"></div>
+      <div class="stars3"></div>
+      <div class="nebula"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-icon">✧</span>
+          <span class="logo-text">ORBIS</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#features">Özellikler</a>
+          <a href="../index.html#how-it-works">Nasıl Çalışır</a>
+          <a href="../index.html#pricing">Fiyatlandırma</a>
+          <a href="index.html" class="active">Blog</a>
+          <a href="../index.html#download" class="nav-cta">İndir</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="blog-header">
+      <h1 class="blog-title">Kozmik Rehber</h1>
+      <p class="section-subtitle">
+        Astroloji dünyasından bilgiler, rehberler ve derinlemesine analizler
+      </p>
+    </header>
+
+    <main class="blog-grid">
+      <!-- Article 7: Houses -->
+      <article class="blog-card">
+        <div class="blog-image">🏘️</div>
+        <div class="blog-content">
+          <span class="blog-date">23 Ocak 2026</span>
+          <h3>12 Ev: Hayatımızın Sahne Arkası</h3>
+          <p>
+            1. evden 12. eve kadar hayatımızın alanları. Kariyer, aşk, para ve
+            sağlık hangi evde? Haritanızdaki boş evler ne anlama geliyor?
+          </p>
+          <a href="astrolojik-evler.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 6: Rising Sign -->
+      <article class="blog-card">
+        <div class="blog-image">🎭</div>
+        <div class="blog-content">
+          <span class="blog-date">23 Ocak 2026</span>
+          <h3>Yükselen Burç: Sosyal Maskemiz</h3>
+          <p>
+            Güneş burcunuz tek başına sizi tanımlamaz. Yükselen burcunuzun
+            (Ascendant) dış görünüşünüz ve hayat yolunuz üzerindeki şaşırtıcı
+            etkisini öğrenin.
+          </p>
+          <a href="yukselen-burc-nedir.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 5: Love Compatibility -->
+      <article class="blog-card">
+        <div class="blog-image">💑</div>
+        <div class="blog-content">
+          <span class="blog-date">22 Ocak 2026</span>
+          <h3>Burçların Aşk Uyumu (Sinastri)</h3>
+          <p>
+            Hangi elementler birbiriyle daha iyi anlaşır? Zıt burçlar gerçekten
+            birbirini çeker mi? İlişkilerde Ay ve Venüs burcunun kritik önemi.
+          </p>
+          <a href="ask-uyumu.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 4: Mercury Retrograde -->
+      <article class="blog-card">
+        <div class="blog-image">🔙</div>
+        <div class="blog-content">
+          <span class="blog-date">22 Ocak 2026</span>
+          <h3>Merkür Retrosu Nedir?</h3>
+          <p>
+            Teknolojik aletler neden bozulur? Eski sevgililer neden geri döner?
+            Retro dönemlerini krizden fırsata çevirmenin yolları.
+          </p>
+          <a href="merkur-retrosu.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 1 -->
+      <article class="blog-card">
+        <div class="blog-image">✨</div>
+        <div class="blog-content">
+          <span class="blog-date">20 Ocak 2026</span>
+          <h3>Astroloji Nedir? Bilim mi, Sanat mı?</h3>
+          <p>
+            Astrolojinin tarihçesi, temel prensipleri ve modern dünyadaki yeri
+            hakkında kapsamlı bir giriş rehberi. Gökyüzünün diliyle tanışın.
+          </p>
+          <a href="astroloji-nedir.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-card">
+        <div class="blog-image">🗺️</div>
+        <div class="blog-content">
+          <span class="blog-date">18 Ocak 2026</span>
+          <h3>Doğum Haritası (Natal Chart) Nasıl Okunur?</h3>
+          <p>
+            Yükselen burç, evler, gezegenler... Doğum haritanızdaki sembollerin
+            ne anlama geldiğini ve hayatınızı nasıl şekillendirdiğini öğrenin.
+          </p>
+          <a href="dogum-haritasi-nasil-okunur.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-card">
+        <div class="blog-image">🔥</div>
+        <div class="blog-content">
+          <span class="blog-date">15 Ocak 2026</span>
+          <h3>Elementler ve Nitelikler: Burcunuzun Doğası</h3>
+          <p>
+            Ateş, Toprak, Hava, Su... Element dengesinin kişiliğiniz üzerindeki
+            etkilerini ve burçların niteliklerini keşfedin.
+          </p>
+          <a href="burclar-ve-elementler.html" class="read-more">
+            Devamını Oku
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">✧</span>
+            <span>ORBIS</span>
+          </div>
+          <p>Kaderin Geometrisi</p>
+          <p class="footer-copyright">
+            © 2026 ORBIS Astrology<br />by Erkan ERDEM
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Uygulama</h4>
+            <a href="https://app.orbisastro.online">Web Uygulaması</a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.orbis.astrology"
+              >Google Play</a
+            >
+            <a href="../index.html#features">Özellikler</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>Yasal</h4>
+            <a href="../legal/privacy.html">Gizlilik Politikası</a>
+            <a href="../legal/terms.html">Kullanım Koşulları</a>
+            <a href="../legal/kvkk.html">KVKK</a>
+          </div>
+
+          <div class="footer-column">
+            <h4>İletişim</h4>
+            <a href="mailto:erkan@erkanerdem.net">erkan@erkanerdem.net</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
