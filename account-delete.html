@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://orbisastro.online/account-delete" />
+    <meta property="og:title" content="Hesap Silme - ORBIS" />
+    <meta property="og:description" content="ORBIS hesabınızı ve verilerinizi kalıcı olarak silin. GDPR ve KVKK uyumlu." />
+    <meta property="og:url" content="https://orbisastro.online/account-delete" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Hesap Silme - ORBIS" />
+    <meta name="twitter:description" content="ORBIS hesabınızı ve verilerinizi kalıcı olarak silin. GDPR ve KVKK uyumlu." />
     <title>Hesap Silme - ORBIS</title>
     <meta
       name="description"
@@ -116,6 +125,53 @@
         color: #ef4444;
         position: absolute;
         left: 0;
+      }
+
+      .data-list,
+      .contact-list {
+        list-style: none;
+        padding: 0;
+      }
+      .data-list li,
+      .contact-list li {
+        color: #cbd5e1;
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+      }
+      .data-list li::before,
+      .contact-list li::before {
+        content: "•";
+        color: #ef4444;
+        position: absolute;
+        left: 0;
+      }
+      .contact-list li {
+        margin-bottom: 6px;
+      }
+      .lead-text {
+        color: rgba(252, 165, 165, 0.9);
+        margin-bottom: 12px;
+      }
+      .small-note {
+        margin-top: 12px;
+        color: #cbd5e1;
+        font-size: 13px;
+      }
+
+      .strong-label {
+        color: #f1f5f9;
+      }
+
+      .contact-lead {
+        margin-bottom: 12px;
+      }
+      .contact-hint {
+        margin-bottom: 8px;
+        color: #cbd5e1;
+      }
+      .footer-back {
+        margin-top: 12px;
       }
 
       .section {
@@ -256,7 +312,7 @@
         <!-- Warning -->
         <div class="warning-box">
           <strong>⚠️ Önemli Uyarı</strong>
-          <p style="color: rgba(252, 165, 165, 0.9); margin-bottom: 12px">
+          <p class="lead-text">
             Hesabınızı sildiğinizde, tüm verileriniz kalıcı olarak silinecektir
             ve bu işlem geri alınamaz!
           </p>
@@ -271,73 +327,13 @@
         <!-- Deleted Data Section -->
         <div class="section">
           <h2>📦 Silinecek Veriler</h2>
-          <ul style="list-style: none; padding: 0">
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 8px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Kişisel bilgileriniz (isim, e-posta)
-            </li>
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 8px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Doğum bilgileriniz ve konum verileri
-            </li>
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 8px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Tüm astrolojik analizleriniz
-            </li>
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 8px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Kayıtlı yorumlarınız ve geçmişiniz
-            </li>
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 8px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Premium abonelik bilgileriniz
-            </li>
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 8px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Uygulama kullanım geçmişiniz
-            </li>
+          <ul class="data-list">
+            <li>Kişisel bilgileriniz (isim, e-posta)</li>
+            <li>Doğum bilgileriniz ve konum verileri</li>
+            <li>Tüm astrolojik analizleriniz</li>
+            <li>Kayıtlı yorumlarınız ve geçmişiniz</li>
+            <li>Premium abonelik bilgileriniz</li>
+            <li>Uygulama kullanım geçmişiniz</li>
           </ul>
         </div>
 
@@ -345,7 +341,7 @@
         <div class="section">
           <h2>🔄 Hesap Silme Süreci</h2>
 
-          <p><strong style="color: #f1f5f9">Mobil Uygulama:</strong></p>
+          <p><strong class="strong-label">Mobil Uygulama:</strong></p>
           <ol>
             <li>ORBIS uygulamasını açın</li>
             <li>Ayarlar → Hesap → "Hesabımı Sil" butonuna tıklayın</li>
@@ -353,7 +349,7 @@
             <li>Verileriniz 24 saat içinde silinecektir</li>
           </ol>
 
-          <p><strong style="color: #f1f5f9">E-posta ile:</strong></p>
+          <p><strong class="strong-label">E-posta ile:</strong></p>
           <p>
             Aşağıdaki e-posta adresine "Hesap Silme Talebi" konulu bir e-posta
             gönderin:
@@ -362,40 +358,20 @@
 
         <!-- Contact Box -->
         <div class="contact-box">
-          <p style="margin-bottom: 12px">
+          <p class="contact-lead">
             📧 E-posta:
             <a href="mailto:privacy@orbisastro.online"
               >privacy@orbisastro.online</a
             >
           </p>
-          <p style="margin-bottom: 8px; color: #cbd5e1">
+          <p class="contact-hint">
             <strong>E-postanızda şunları belirtin:</strong>
           </p>
-          <ul style="list-style: none; padding: 0">
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 6px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Kayıtlı e-posta adresiniz
-            </li>
-            <li
-              style="
-                color: #cbd5e1;
-                margin-bottom: 6px;
-                padding-left: 20px;
-                position: relative;
-              "
-            >
-              <span style="position: absolute; left: 0">•</span>
-              Hesap silme talebiniz
-            </li>
+          <ul class="contact-list">
+            <li>Kayıtlı e-posta adresiniz</li>
+            <li>Hesap silme talebiniz</li>
           </ul>
-          <p style="margin-top: 12px; color: #cbd5e1; font-size: 13px">
+          <p class="small-note">
             ⏱️ Talebiniz 48 saat içinde işleme alınacaktır.
           </p>
         </div>
@@ -436,7 +412,7 @@
           Bu işlem KVKK ve GDPR kapsamında "unutulma hakkı" çerçevesinde
           gerçekleştirilmektedir.
         </p>
-        <p style="margin-top: 12px">
+        <p class="footer-back">
           <a href="https://www.orbisastro.online">← ORBIS Ana Sayfa</a>
         </p>
       </div>

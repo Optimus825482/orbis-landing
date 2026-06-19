@@ -1,0 +1,42 @@
+# Build/test/tooling — never ship in image
+.git/
+.gitignore
+.github/
+.vscode/
+.idea/
+*.md
+*.ps1
+*.sh
+
+# Local Python verification scripts (added this session)
+verify_*.py
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs/temp
+*.log
+*.tmp
+tmp/
+temp/
+
+# Node/JS (if added later)
+node_modules/
+.vercel/
+dist/
+build/
+
+# Environment & secrets
+.env*
+*.pem
+*.key
+*.crt
+secrets/
+
+# Docker-specific
+Dockerfile
+docker-compose*.yml
+.dockerignore

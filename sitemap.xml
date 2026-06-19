@@ -1,74 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://orbisastro.online/</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://orbisastro.online/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://orbisastro.online/" />
+  </url>
+  <url>
+    <loc>https://orbisastro.online/account-delete</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/index.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/astroloji-nedir.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/dogum-haritasi-nasil-okunur.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/burclar-ve-elementler.html</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/merkur-retrosu.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/ask-uyumu.html</loc>
-    <lastmod>2026-01-22</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/yukselen-burc-nedir.html</loc>
-    <lastmod>2026-01-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/blog/astrolojik-evler.html</loc>
-    <lastmod>2026-01-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/legal/privacy.html</loc>
-    <lastmod>2025-01-17</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/legal/terms.html</loc>
-    <lastmod>2025-01-17</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://orbisastro.online/legal/kvkk.html</loc>
-    <lastmod>2025-01-17</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

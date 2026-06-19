@@ -1,1 +1,60 @@
-.vercel
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+dist/
+build/
+.cache/
+.vercel/
+out/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+credentials/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.bak
+
+# Temp
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+.nyc_output/
+
+# OS junk
+*.pid
+*.seed
+.fallow/

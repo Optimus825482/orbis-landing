@@ -83,19 +83,32 @@ document.head.insertAdjacentHTML(
 `
 );
 
-// Parallax effect for stars
-window.addEventListener("mousemove", (e) => {
+// Parallax effect for stars (rAF-throttled, respects reduced-motion)
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!reducedMotion) {
   const stars = document.querySelector(".stars");
   const stars2 = document.querySelector(".stars2");
   const stars3 = document.querySelector(".stars3");
+  let pendingX = 0;
+  let pendingY = 0;
+  let rafScheduled = false;
 
-  const x = e.clientX / window.innerWidth;
-  const y = e.clientY / window.innerHeight;
+  function applyParallax() {
+    if (stars) stars.style.transform = `translate(${pendingX * 20}px, ${pendingY * 20}px)`;
+    if (stars2) stars2.style.transform = `translate(${pendingX * -15}px, ${pendingY * -15}px)`;
+    if (stars3) stars3.style.transform = `translate(${pendingX * 10}px, ${pendingY * 10}px)`;
+    rafScheduled = false;
+  }
 
-  if (stars) stars.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
-  if (stars2) stars2.style.transform = `translate(${x * -15}px, ${y * -15}px)`;
-  if (stars3) stars3.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-});
+  window.addEventListener("mousemove", (e) => {
+    pendingX = e.clientX / window.innerWidth;
+    pendingY = e.clientY / window.innerHeight;
+    if (!rafScheduled) {
+      rafScheduled = true;
+      requestAnimationFrame(applyParallax);
+    }
+  }, { passive: true });
+}
 
 // Console Easter Egg
 console.log(`
@@ -105,3 +118,104 @@ Yapay Zeka Destekli Astroloji
 © 2026 ORBIS by Erkan ERDEM
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `);
+
+// ═══════════════════════════════════════════════════════════════
+// KVKK / GDPR Cookie Consent
+// ═══════════════════════════════════════════════════════════════
+
+const COOKIE_CONSENT_KEY = "orbis_cookie_consent";
+
+function getCookieConsent() {
+  try {
+    const raw = localStorage.getItem(COOKIE_CONSENT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === "object" && parsed.decision) return parsed;
+  } catch (e) {
+    // localStorage unavailable or corrupt
+  }
+  return null;
+}
+
+function setCookieConsent(decision) {
+  try {
+    localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify({
+      decision,
+      timestamp: new Date().toISOString(),
+      version: "1.0"
+    }));
+  } catch (e) {
+    // ignore — banner still works for the session
+  }
+}
+
+function disableNonEssentialScripts() {
+  // Disable AdSense by removing the script element if present
+  document.querySelectorAll('script[src*="googlesyndication.com"]').forEach((s) => {
+    s.remove();
+  });
+  // Disable Google Analytics by stubbing dataLayer
+  window.dataLayer = [];
+  window.gtag = function () {
+    // no-op when consent not granted
+  };
+}
+
+function loadNonEssentialScripts() {
+  // Reload page to re-execute deferred GA script with consent
+  // (simpler than dynamically injecting after deferral has passed)
+  location.reload();
+}
+
+function initCookieBanner() {
+  const banner = document.getElementById("cookie-banner");
+  if (!banner) return;
+
+  const consent = getCookieConsent();
+
+  if (!consent) {
+    // First visit — show banner, block non-essential by default
+    disableNonEssentialScripts();
+    banner.hidden = false;
+  } else if (consent.decision === "accept") {
+    banner.hidden = true;
+    // Consent given previously — scripts load normally via <head> defer
+  } else {
+    // Rejected — keep blocking
+    banner.hidden = true;
+    disableNonEssentialScripts();
+  }
+
+  banner.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-cookie-action]");
+    if (!btn) return;
+    const action = btn.dataset.cookieAction;
+    setCookieConsent(action);
+    banner.hidden = true;
+    if (action === "accept") {
+      loadNonEssentialScripts();
+    } else {
+      disableNonEssentialScripts();
+    }
+  });
+
+  // Keyboard support: Escape closes banner as "reject only"
+  banner.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !banner.hidden) {
+      setCookieConsent("reject");
+      banner.hidden = true;
+      disableNonEssentialScripts();
+    }
+  });
+}
+
+// Initial gate — block GA/AdSense until consent decision
+if (!getCookieConsent() || getCookieConsent().decision !== "accept") {
+  disableNonEssentialScripts();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCookieBanner);
+} else {
+  initCookieBanner();
+}
