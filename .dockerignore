@@ -30,13 +30,20 @@ dist/
 build/
 
 # Environment & secrets
-.env*
+.env
+.env.*
+!.env.example
 *.pem
 *.key
 *.crt
 secrets/
+certs/
 
-# Docker-specific
+# Docker & compose
 Dockerfile
-docker-compose*.yml
+docker-compose.yml
+docker-compose.yaml
+docker-compose.*.yml
+docker-compose.*.yaml
 .dockerignore
+DEPLOY.md

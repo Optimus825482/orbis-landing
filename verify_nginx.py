@@ -1,6 +1,15 @@
-import re, sys
+import re, sys, os
 
-conf = open('nginx.conf', encoding='utf-8').read()
+# Determine which config to validate
+config_path = os.environ.get('NGINX_CONFIG', 'nginx/http.conf')
+if not os.path.exists(config_path):
+    print(f"Config not found: {config_path}")
+    print("Set NGINX_CONFIG env var or place file at nginx/http.conf")
+    sys.exit(1)
+
+print(f"Validating: {config_path}")
+print('=' * 60)
+conf = open(config_path, encoding='utf-8').read()
 
 errors = []
 warnings = []
@@ -41,22 +50,30 @@ for d in required_server:
         errors.append(f'Missing required server directive: {d}')
         ok = False
 
-# 4. Security headers
+# 4. Security headers — Mode-aware
+# Mode A (http.conf): HSTS expected MISSING (CF edge emits)
+# Mode B (cf-origin.conf): HSTS required
+is_mode_a = config_path.endswith('http.conf')
+hsts_required = not is_mode_a
+
 sec_headers = {
-    'X-Frame-Options': r'X-Frame-Options',
-    'X-Content-Type-Options': r'X-Content-Type-Options',
-    'Referrer-Policy': r'Referrer-Policy',
-    'Content-Security-Policy': r'Content-Security-Policy',
-    'Strict-Transport-Security': r'Strict-Transport-Security',
-    'Permissions-Policy': r'Permissions-Policy',
+    'X-Frame-Options': (r'X-Frame-Options', True),
+    'X-Content-Type-Options': (r'X-Content-Type-Options', True),
+    'Referrer-Policy': (r'Referrer-Policy', True),
+    'Content-Security-Policy': (r'Content-Security-Policy', True),
+    'Strict-Transport-Security': (r'Strict-Transport-Security', hsts_required),
+    'Permissions-Policy': (r'Permissions-Policy', True),
 }
 print('\nSecurity headers:')
-for name, pat in sec_headers.items():
+for name, (pat, required) in sec_headers.items():
     found = bool(re.search(pat, clean))
-    print(f'  {"OK" if found else "MISSING"} {name}')
-    if not found:
+    status = "OK" if found else ("EXPECTED-MISSING" if not required else "MISSING")
+    print(f'  {status} {name}')
+    if not found and required:
         errors.append(f'Missing security header: {name}')
         ok = False
+    elif found and not required:
+        warnings.append(f'{name} present in Mode A — CF edge also emits (duplicate)')
 
 # 5. CSP analysis
 csp = re.search(r'Content-Security-Policy\s+"([^"]+)"', clean)

@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
-# Nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Nginx config (Mode A: HTTP 80, CF Proxy ON)
+COPY nginx/http.conf /etc/nginx/conf.d/default.conf
 
 # Site dosyalarını kopyala (yalnızca gerekli olanlar)
 COPY index.html styles.css script.js /usr/share/nginx/html/
