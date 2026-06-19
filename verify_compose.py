@@ -61,16 +61,18 @@ else:
     print(f"  volumes: {len(mount_paths)} (config image-baked — recommended)")
 
     # Networks
-    if 'orbis-net' not in svc.get('networks', []):
-        warnings.append("Service not attached to orbis-net")
+    # As of 2026-Jun-19: Coolify v4 manages its own network (coolify_default).
+    # Forcing custom network breaks Traefik proxy DNS → 504.
+    svc_networks = svc.get('networks')
+    if svc_networks and isinstance(svc_networks, list) and 'orbis-net' in svc_networks:
+        warnings.append("Custom 'orbis-net' network — Coolify v4 prefers default network for proxy DNS resolution")
 
 # Networks
 networks = compose.get('networks', {})
-if 'orbis-net' not in networks:
-    errors.append("Network 'orbis-net' missing")
-    ok = False
+if 'orbis-net' in networks:
+    print(f"Network orbis-net declared (Coolify v4 ignores — uses coolify_default)")
 else:
-    print(f"Network orbis-net: {networks['orbis-net'].get('driver', 'default')}")
+    print(f"Network: default (Coolify v4 coolify_default — correct)")
 
 # 2. nginx-http.conf (Mode A)
 print("\n" + "=" * 60)
@@ -151,7 +153,7 @@ print("=" * 60)
 if os.path.exists('.env.example'):
     with open('.env.example') as f:
         env = f.read()
-    for key in ['DOMAIN', 'CONTAINER_NAME', 'PUBLIC_PORT', 'TZ']:
+    for key in ['DOMAIN', 'PUBLIC_PORT', 'TZ']:
         if f'{key}=' in env:
             print(f"  {key}: OK")
         else:

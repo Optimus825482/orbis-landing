@@ -14,11 +14,15 @@
 #   7. Deploy
 #
 # Mode B (CF Proxy OFF + Origin Cert): see nginx-configs.md
+#
+# IMPORTANT: Do NOT set `container_name` or custom `networks:` — Coolify v4
+# generates a unique container_name per deployment and attaches it to
+# `coolify_default` (or its own managed network). Forcing a fixed name or
+# custom network breaks Coolify's Traefik proxy DNS resolution → 504.
 # ═══════════════════════════════════════════════════════════════
 
 services:
   orbis-landing:
-    container_name: ${CONTAINER_NAME:-orbis-landing}
     build:
       context: .
       dockerfile: Dockerfile
@@ -49,9 +53,6 @@ services:
     #   - ./certs/origin.pem:/etc/nginx/ssl/origin.pem:ro
     #   - ./certs/origin.key:/etc/nginx/ssl/origin.key:ro
 
-    networks:
-      - orbis-net
-
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost/health"]
       interval: 30s
@@ -71,8 +72,3 @@ services:
         max-file: "3"
 
     stop_grace_period: 10s
-
-networks:
-  orbis-net:
-    name: orbis-net
-    driver: bridge
