@@ -125,13 +125,14 @@ Daha fazla origin-side kontrol istiyorsan:
    - Hosts: `orbisastro.online`, `*.orbisastro.online`
    - Validity: 15 years
 2. PEM → `certs/origin.pem`, Key → `certs/origin.key` (gitignored)
-3. `docker-compose.yaml` mount satırını değiştir (`http.conf` → `cf-origin.conf` + cert volume'ları)
+3. Dockerfile'da `COPY nginx-http.conf` → `COPY nginx-cf-origin.conf`
 4. Dockerfile'da `EXPOSE 80` → `EXPOSE 80 443`
-5. CF SSL/TLS mode → **Full (Strict)**
-6. CF DNS'te proxy → **DNS only** (gri bulut)
-7. Redeploy
+5. `docker-compose.yaml`'da Mode B volume block'unu aç
+6. CF SSL/TLS mode → **Full (Strict)**
+7. CF DNS'te proxy → **DNS only** (gri bulut)
+8. Redeploy
 
-Detay: `nginx-configs.md`.
+**Not:** Mode A→B geçişi bind-mount gerektirmez. Config image içine gömülü — sadece Dockerfile satırı değişir.
 
 ## Troubleshooting
 

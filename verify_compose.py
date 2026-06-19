@@ -47,20 +47,18 @@ else:
         ok = False
 
     # Volume mount validation
-    vols = svc.get('volumes', [])
+    # As of 2026-Jun-19: bind mounts disabled — config baked into image via Dockerfile COPY.
+    # Coolify helper container bind-mount path resolution is unreliable.
+    vols = svc.get('volumes', []) or []
     mount_paths = []
     for v in vols:
         if isinstance(v, str):
             mount_paths.append(v)
     http_conf_mounted = any('nginx-http.conf' in v for v in mount_paths)
     cf_origin_mounted = any('nginx-cf-origin.conf' in v for v in mount_paths)
-    if not http_conf_mounted and not cf_origin_mounted:
-        errors.append("Neither nginx-http.conf nor nginx-cf-origin.conf mounted")
-        ok = False
-    if http_conf_mounted:
-        print(f"  Mode A mount: OK")
-    if cf_origin_mounted:
-        print(f"  Mode B mount: OK (certs required)")
+    if http_conf_mounted or cf_origin_mounted:
+        warnings.append("Bind mount present — Coolify helper may fail with 'not a directory'. Prefer image-baked config.")
+    print(f"  volumes: {len(mount_paths)} (config image-baked — recommended)")
 
     # Networks
     if 'orbis-net' not in svc.get('networks', []):
