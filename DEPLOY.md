@@ -8,7 +8,7 @@ Domain: **orbisastro.online** | Platform: Coolify | SSL: Cloudflare
 Kullanıcı → Cloudflare Edge (TLS) → CF Proxy → Coolify Reverse Proxy → Container :80 (nginx)
 ```
 
-**Default Mode A** kullanılır (Cloudflare Proxy ON). Mode B (CF Proxy OFF + Origin Cert) opsiyonel — bkz `nginx/README.md`.
+**Default Mode A** kullanılır (Cloudflare Proxy ON). Mode B (CF Proxy OFF + Origin Cert) opsiyonel — bkz `nginx-configs.md`.
 
 ## Önkoşullar
 
@@ -131,7 +131,7 @@ Daha fazla origin-side kontrol istiyorsan:
 6. CF DNS'te proxy → **DNS only** (gri bulut)
 7. Redeploy
 
-Detay: `nginx/README.md`.
+Detay: `nginx-configs.md`.
 
 ## Troubleshooting
 

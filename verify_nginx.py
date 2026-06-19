@@ -1,7 +1,7 @@
 import re, sys, os
 
 # Determine which config to validate
-config_path = os.environ.get('NGINX_CONFIG', 'nginx/http.conf')
+config_path = os.environ.get('NGINX_CONFIG', 'nginx-http.conf')
 if not os.path.exists(config_path):
     print(f"Config not found: {config_path}")
     print("Set NGINX_CONFIG env var or place file at nginx/http.conf")
@@ -53,7 +53,7 @@ for d in required_server:
 # 4. Security headers — Mode-aware
 # Mode A (http.conf): HSTS expected MISSING (CF edge emits)
 # Mode B (cf-origin.conf): HSTS required
-is_mode_a = config_path.endswith('http.conf')
+is_mode_a = 'http.conf' in config_path and 'cf-origin' not in config_path
 hsts_required = not is_mode_a
 
 sec_headers = {

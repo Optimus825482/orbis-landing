@@ -1,7 +1,8 @@
 FROM nginx:alpine
 
 # Nginx config (Mode A: HTTP 80, CF Proxy ON)
-COPY nginx/http.conf /etc/nginx/conf.d/default.conf
+# File at repo root — Coolify mount compatibility
+COPY nginx-http.conf /etc/nginx/conf.d/default.conf
 
 # Site dosyalarını kopyala (yalnızca gerekli olanlar)
 COPY index.html styles.css script.js /usr/share/nginx/html/

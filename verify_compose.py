@@ -52,10 +52,10 @@ else:
     for v in vols:
         if isinstance(v, str):
             mount_paths.append(v)
-    http_conf_mounted = any('nginx/http.conf' in v for v in mount_paths)
-    cf_origin_mounted = any('nginx/cf-origin.conf' in v for v in mount_paths)
+    http_conf_mounted = any('nginx-http.conf' in v for v in mount_paths)
+    cf_origin_mounted = any('nginx-cf-origin.conf' in v for v in mount_paths)
     if not http_conf_mounted and not cf_origin_mounted:
-        errors.append("Neither http.conf nor cf-origin.conf mounted")
+        errors.append("Neither nginx-http.conf nor nginx-cf-origin.conf mounted")
         ok = False
     if http_conf_mounted:
         print(f"  Mode A mount: OK")
@@ -74,55 +74,55 @@ if 'orbis-net' not in networks:
 else:
     print(f"Network orbis-net: {networks['orbis-net'].get('driver', 'default')}")
 
-# 2. nginx/http.conf
+# 2. nginx-http.conf (Mode A)
 print("\n" + "=" * 60)
-print("nginx/http.conf (Mode A)")
+print("nginx-http.conf (Mode A)")
 print("=" * 60)
-if os.path.exists('nginx/http.conf'):
-    with open('nginx/http.conf') as f:
+if os.path.exists('nginx-http.conf'):
+    with open('nginx-http.conf') as f:
         http_conf = f.read()
     print(f"  Size: {len(http_conf)} bytes")
     if 'listen 80' not in http_conf:
-        errors.append("http.conf doesn't listen on 80")
+        errors.append("nginx-http.conf doesn't listen on 80")
         ok = False
     if 'Strict-Transport-Security' in http_conf:
-        warnings.append("http.conf has HSTS — CF edge also emits (Mode A duplicate)")
+        warnings.append("nginx-http.conf has HSTS — CF edge also emits (Mode A duplicate)")
     if 'upgrade-insecure-requests' in http_conf:
-        warnings.append("http.conf has upgrade-insecure-requests — CF handles")
+        warnings.append("nginx-http.conf has upgrade-insecure-requests — CF handles")
     if 'Content-Security-Policy' not in http_conf:
-        errors.append("http.conf missing CSP")
+        errors.append("nginx-http.conf missing CSP")
         ok = False
     if 'orbisastro.online' not in http_conf:
-        warnings.append("http.conf doesn't reference orbisastro.online domain")
+        warnings.append("nginx-http.conf doesn't reference orbisastro.online domain")
     print("  listen 80: OK")
     print(f"  CSP: {'present' if 'Content-Security-Policy' in http_conf else 'MISSING'}")
 else:
-    errors.append("nginx/http.conf missing")
+    errors.append("nginx-http.conf missing")
     ok = False
 
-# 3. nginx/cf-origin.conf
+# 3. nginx-cf-origin.conf (Mode B)
 print("\n" + "=" * 60)
-print("nginx/cf-origin.conf (Mode B)")
+print("nginx-cf-origin.conf (Mode B)")
 print("=" * 60)
-if os.path.exists('nginx/cf-origin.conf'):
-    with open('nginx/cf-origin.conf') as f:
+if os.path.exists('nginx-cf-origin.conf'):
+    with open('nginx-cf-origin.conf') as f:
         cf_conf = f.read()
     if 'listen 443' not in cf_conf:
-        errors.append("cf-origin.conf missing listen 443")
+        errors.append("nginx-cf-origin.conf missing listen 443")
         ok = False
     if 'ssl_certificate' not in cf_conf:
-        errors.append("cf-origin.conf missing ssl_certificate directive")
+        errors.append("nginx-cf-origin.conf missing ssl_certificate directive")
         ok = False
     if 'Strict-Transport-Security' not in cf_conf:
-        warnings.append("cf-origin.conf missing HSTS (Mode B needs it)")
+        warnings.append("nginx-cf-origin.conf missing HSTS (Mode B needs it)")
     if '/etc/nginx/ssl/' not in cf_conf:
-        errors.append("cf-origin.conf mount path missing")
+        errors.append("nginx-cf-origin.conf mount path missing")
         ok = False
     print("  listen 443: OK")
     print("  ssl_certificate: present")
     print("  HSTS: " + ("present" if 'Strict-Transport-Security' in cf_conf else "MISSING"))
 else:
-    errors.append("nginx/cf-origin.conf missing")
+    errors.append("nginx-cf-origin.conf missing")
     ok = False
 
 # 4. Dockerfile
@@ -131,10 +131,10 @@ print("Dockerfile")
 print("=" * 60)
 with open('Dockerfile') as f:
     df = f.read()
-if 'nginx/http.conf' in df:
-    print("  COPY nginx/http.conf: OK")
+if 'nginx-http.conf' in df:
+    print("  COPY nginx-http.conf: OK")
 else:
-    errors.append("Dockerfile doesn't COPY nginx/http.conf")
+    errors.append("Dockerfile doesn't COPY nginx-http.conf")
     ok = False
 if 'USER nginx' in df:
     print("  USER nginx: OK")
@@ -183,14 +183,14 @@ else:
     errors.append("DEPLOY.md missing")
     ok = False
 
-# 7. nginx/README.md
+# 7. nginx-configs.md
 print("\n" + "=" * 60)
-print("nginx/README.md")
+print("nginx-configs.md")
 print("=" * 60)
-if os.path.exists('nginx/README.md'):
+if os.path.exists('nginx-configs.md'):
     print(f"  Exists: OK")
 else:
-    errors.append("nginx/README.md missing")
+    errors.append("nginx-configs.md missing")
     ok = False
 
 # 8. .dockerignore

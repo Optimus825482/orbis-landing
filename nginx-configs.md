@@ -1,15 +1,17 @@
-# ORBIS Nginx Config — Mode Switch Cheatsheet
+# ORBIS Nginx Configs — Mode Switch Cheatsheet
 
-Bu dizinde iki nginx konfigürasyonu var. Hangisini kullanacağın Cloudflare Proxy moduna göre değişir.
+İki nginx konfigürasyonu var. Hangisini kullanacağın Cloudflare Proxy moduna göre değişir.
+
+> **Neden düz dosyalar?** Coolify volume mount'ta `./nginx/` gibi alt dizinleri **directory** olarak treat ediyor (bind mount file'a takılınca "not a directory" hatası fırlatıyor). Bu yüzden config'ler repo root'unda düz dosya olarak duruyor.
 
 ## Mode Karar Tablosu
 
 | Senaryo | Mode | Config | CF Proxy | CF SSL Mode |
 |---|---|---|---|---|
-| **Default (önerilen)** | A | `http.conf` | **ON** (turuncu bulut) | Full |
-| Full origin control, edge cache kapalı | B | `cf-origin.conf` | **OFF** (gri bulut) | Full (Strict) |
+| **Default (önerilen)** | A | `nginx-http.conf` | **ON** (turuncu bulut) | Full |
+| Full origin control, edge cache kapalı | B | `nginx-cf-origin.conf` | **OFF** (gri bulut) | Full (Strict) |
 
-## Mode A — `http.conf` (Default)
+## Mode A — `nginx-http.conf` (Default)
 
 **Ne zaman:** Cloudflare Proxy **ON** (turuncu bulut).
 
@@ -27,10 +29,10 @@ Kullanıcı → CF Edge (TLS 443) → CF Proxy (HTTP) → Coolify Proxy (HTTP) �
 **docker-compose.yaml mount:**
 ```yaml
 volumes:
-  - ./nginx/http.conf:/etc/nginx/conf.d/default.conf:ro
+  - ./nginx-http.conf:/etc/nginx/conf.d/default.conf:ro
 ```
 
-## Mode B — `cf-origin.conf` (Opsiyonel)
+## Mode B — `nginx-cf-origin.conf` (Opsiyonel)
 
 **Ne zaman:** Cloudflare Proxy **OFF** (gri bulut) + tam origin-side kontrol istiyorsun.
 
@@ -49,20 +51,18 @@ Kullanıcı → CF Edge (TLS 443, Full Strict) → Container :443 (Origin Cert i
 1. CF Dashboard → **SSL/TLS** → **Origin Server** → **Create Certificate**
    - Hosts: `orbisastro.online`, `*.orbisastro.online`
    - Validity: 15 years
-2. PEM'i `certs/origin.pem` olarak kaydet (container mount yolu: `/etc/nginx/ssl/origin.pem`)
-3. Private key'i `certs/origin.key` olarak kaydet (container mount yolu: `/etc/nginx/ssl/origin.key`)
-4. CF Dashboard → **SSL/TLS** → **Overview** → encryption mode = **Full (Strict)**
-5. CF DNS'te `orbisastro.online` A record → Proxy **OFF** (gri bulut)
-6. `docker-compose.yaml`'da mount satırlarını güncelle:
-
+2. PEM → `certs/origin.pem`, Key → `certs/origin.key` (gitignored)
+3. `docker-compose.yaml` mount satırını değiştir:
 ```yaml
 volumes:
-  - ./nginx/cf-origin.conf:/etc/nginx/conf.d/default.conf:ro
+  - ./nginx-cf-origin.conf:/etc/nginx/conf.d/default.conf:ro
   - ./certs/origin.pem:/etc/nginx/ssl/origin.pem:ro
   - ./certs/origin.key:/etc/nginx/ssl/origin.key:ro
 ```
-
-7. Dockerfile'da `EXPOSE 80` → `EXPOSE 80 443` (veya Mode B variant Dockerfile kullan)
+4. Dockerfile'da `EXPOSE 80` → `EXPOSE 80 443` (veya Mode B variant Dockerfile kullan)
+5. CF SSL/TLS mode → **Full (Strict)**
+6. CF DNS'te `orbisastro.online` A record → Proxy **OFF** (gri bulut)
+7. Redeploy
 
 ## Mode Değiştirme
 
@@ -70,10 +70,10 @@ docker-compose.yaml'da tek bir mount satırını değiştirmen yeterli. Coolify 
 
 ```yaml
 # Mode A (default)
-- ./nginx/http.conf:/etc/nginx/conf.d/default.conf:ro
+- ./nginx-http.conf:/etc/nginx/conf.d/default.conf:ro
 
 # Mode B (origin-side TLS)
-- ./nginx/cf-origin.conf:/etc/nginx/conf.d/default.conf:ro
+- ./nginx-cf-origin.conf:/etc/nginx/conf.d/default.conf:ro
 - ./certs/origin.pem:/etc/nginx/ssl/origin.pem:ro
 - ./certs/origin.key:/etc/nginx/ssl/origin.key:ro
 ```
@@ -91,3 +91,9 @@ docker-compose.yaml'da tek bir mount satırını değiştirmen yeterli. Coolify 
 - CF edge cache'ini BYPASS etmen gerekiyor
 - Origin'e doğrudan test erişimi istiyorsun (CF'yi devre dışı bırak)
 - Kendi sertifikanla (Let's Encrypt wildcard) çalışmak istiyorsun
+
+## Coolify-specific Notlar
+
+- Coolify `nginx` adlı klasörü reserved treat edebilir → config'ler repo root'unda düz dosya olmalı
+- Volume mount path mutlaka `./` ile başlamalı, absolute path Coolify'nin build context'inde resolve olmaz
+- Mode değişikliği sonrası Coolify dashboard'dan **Force Rebuild** gerekebilir (cache'lenmiş layer yüzünden)
