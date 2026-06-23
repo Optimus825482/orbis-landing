@@ -1,5 +1,9 @@
 FROM nginx:alpine
 
+# Google Analytics 4 — build-time substitute (Coolify env: GA4_MEASUREMENT_ID)
+# Default değer: G-PLJEZCGT27BU (senin ölçüm ID'n). Coolify'da env ile override et.
+ARG GA4_MEASUREMENT_ID=G-PLJEZCGT27BU
+
 # Nginx config (Mode A: HTTP 80, CF Proxy ON)
 # File at repo root — Coolify mount compatibility
 COPY nginx-http.conf /etc/nginx/conf.d/default.conf
@@ -12,6 +16,12 @@ COPY images/ /usr/share/nginx/html/images/
 COPY blog/ /usr/share/nginx/html/blog/
 COPY legal/ /usr/share/nginx/html/legal/
 COPY .well-known/ /usr/share/nginx/html/.well-known/
+
+# Build arg → index.html inject (sed)
+RUN if [ -n "$GA4_MEASUREMENT_ID" ]; then \
+      sed -i "s|__GA4_ID__|${GA4_MEASUREMENT_ID}|g" /usr/share/nginx/html/index.html && \
+      echo "GA4 ID injected: ${GA4_MEASUREMENT_ID}"; \
+    fi
 
 # Nginx varsayılan dosyalarını temizle
 RUN rm -f /usr/share/nginx/html/index.html.orig \
